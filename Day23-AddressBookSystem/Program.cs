@@ -24,7 +24,6 @@ namespace Day23_AddressBookSystem
                     case 3:
                         // to exit from main method
                         return;
-
                 }
             }
         }
