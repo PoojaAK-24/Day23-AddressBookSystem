@@ -28,9 +28,9 @@ namespace Day23_AddressBookSystem
                         AddressBookDetails.DeleteDetails();
                         break;
                     case 5:
-                        // to exit from main method 
+                        // to exit from main method
                         Console.WriteLine("Exited");
-                        return;
+                        return; 
 
                 }
             }
