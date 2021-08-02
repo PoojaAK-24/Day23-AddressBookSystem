@@ -22,7 +22,7 @@ namespace Day23_AddressBookSystem
                         AddressBookDetails.ViewContacts();
                         break;
                     case 3:
-                        // to exit from main method 
+                        // to exit from main method  
                         return;
                 }
             }
