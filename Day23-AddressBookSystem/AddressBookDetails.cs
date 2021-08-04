@@ -44,9 +44,31 @@ namespace Day23_AddressBookSystem
             {
                 //object for person class
                 Person person = new Person();
+                while (true)
+                {
+                    Console.Write("Enter First Name: ");
+                    string firstName = Console.ReadLine();
+                    if (contacts.Count > 0)
+                    {
+                        var x = contacts.Find(x => x.firstName.Equals(firstName));
+                        if (x != null)
+                        {
+                            Console.WriteLine("Your name  already exists");
+                        }
+                        else
+                        {
+                            person.firstName = firstName;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        person.firstName = firstName;
+                        break;
+                    }
 
-                Console.Write("Enter First Name: ");
-                person.firstName = Console.ReadLine();
+                }
+
                 Console.Write("Enter Last Name: ");
                 person.lastName = Console.ReadLine();
                 Console.Write("Enter Address: ");
@@ -272,7 +294,7 @@ namespace Day23_AddressBookSystem
                     Console.WriteLine("The name you have entered not in the address book");
                 }
 
-            } 
+            }
             else
             {
                 Console.WriteLine("Your contact list is empty");
