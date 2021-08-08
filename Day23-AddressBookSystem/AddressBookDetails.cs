@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Day23_AddressBookSystem 
@@ -14,6 +15,9 @@ namespace Day23_AddressBookSystem
         private List<Person> searchContacts = new List<Person>();
         //list for view contacts
         private List<Person> viewContacts = new List<Person>();
+        //list for sorting elememts
+        List<Person> SortedList = new List<Person>();
+
         //address book dictioanry to store values
         private static Dictionary<string, List<Person>> addressBookDictionary = new Dictionary<string, List<Person>>();
 
@@ -332,9 +336,9 @@ namespace Day23_AddressBookSystem
 
         }
 
-        
-        // Method to search deatils
-       
+        /// <summary>
+        /// Method to search deatils
+        /// </summary>
         public void SearchDetails()
         {
             string personName;
@@ -361,9 +365,9 @@ namespace Day23_AddressBookSystem
             }
 
         }
-       
-        // method to view deatils
-       
+        /// <summary>
+        /// method to view deatils
+        /// </summary>
         public void ViewDetailsByStateOrCity()
         {
 
@@ -387,9 +391,9 @@ namespace Day23_AddressBookSystem
 
         }
 
-        
-        // Method to count persons
-        
+        /// <summary>
+        /// Method to count persons
+        /// </summary>
         public void CountByStateOrCity()
         {
 
@@ -412,9 +416,11 @@ namespace Day23_AddressBookSystem
             }
 
         }
-       
-        // Method to view contacts based on city name
-        
+        /// <summary>
+        /// Method to view contacts based on city name
+        /// </summary>
+        /// <param name="cityName"></param>
+        /// <param name="check"></param>
         public void ViewByCityName(string cityName, string check)
         {
             if (addressBookDictionary.Count > 0)
@@ -451,9 +457,11 @@ namespace Day23_AddressBookSystem
                 Console.WriteLine("Adress book is empty");
             }
         }
-        
-        // Method to view contacts based on state name
-        
+        /// <summary>
+        /// Method to view contacts based on state name
+        /// </summary>
+        /// <param name="stateName"></param>
+        /// <param name="check"></param>
         public void ViewByStateName(string stateName, string check)
         {
             if (addressBookDictionary.Count > 0)
@@ -489,9 +497,11 @@ namespace Day23_AddressBookSystem
                 Console.WriteLine("Adress book is empty");
             }
         }
-        
-        // Method to search contacts based on city name
-        
+        /// <summary>
+        /// Method to search contacts based on city name
+        /// </summary>
+        /// <param name="cityName"></param>
+        /// <param name="personName"></param>
         public void SearchByCityName(string cityName, string personName)
         {
             if (addressBookDictionary.Count > 0)
@@ -520,9 +530,11 @@ namespace Day23_AddressBookSystem
                 Console.WriteLine("Adress book is empty");
             }
         }
-       
-        // Method to search contacts based on state name
-       
+        /// <summary>
+        /// Method to search contacts based on state name
+        /// </summary>
+        /// <param name="stateName"></param>
+        /// <param name="personName"></param>
         public void SearchByStateName(string stateName, string personName)
         {
             if (addressBookDictionary.Count > 0)
@@ -550,6 +562,32 @@ namespace Day23_AddressBookSystem
                 Console.WriteLine("Adress book is empty");
             }
 
+        } 
+
+
+        public void SortList()
+        {
+            if (addressBookDictionary.Count > 0)
+            {
+
+                //printing the values in address book
+                foreach (KeyValuePair<string, List<Person>> dict in addressBookDictionary)
+                {
+                    //sorting list based on first name
+                    SortedList = dict.Value.OrderBy(x => x.firstName).ToList();
+                    Console.WriteLine($"**********AFTER SORTING {dict.Key}**********");
+                    foreach (var addressBook in SortedList)
+                    {
+                        PrintValues(addressBook);
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Address Book is Empty");
+            }
+
         }
     }
 }
+
